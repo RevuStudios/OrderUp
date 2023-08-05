@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import OrderList from './OrderList';
-import FooterMenu from './FooterMenu';
-import Header from './Header';
+import AppNavigator from './AppNavigator';
 
 export default function App() {
 
@@ -14,14 +12,7 @@ export default function App() {
     // Perform actions based on the selected menu item if needed.
   };
 
-  return (
-    <View style={styles.container}>
-    <Header title="Order Up" />
-      <OrderList />
-      <FooterMenu activeItem={activeMenuItem} onMenuItemPress={handleMenuItemPress} />
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <AppNavigator/>;
 }
 
 const styles = StyleSheet.create({

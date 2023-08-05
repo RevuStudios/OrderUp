@@ -14,11 +14,9 @@ const OrderList = () => {
         // Add more orders as needed
     ];
 
-    const [orders, setOrders] = useState(initialOrders);
-    const handleDeleteOrder = (orderId) => {
-        // Implement the logic to delete the order with the given ID from the list
-        // For example, you can use state or Redux to manage the list of orders
-        console.log('Deleted order with ID:', orderId);
+    const [orderItems, setOrderItems] = useState(initialOrders);
+    const handleDeleteOrder = (id) => {
+        setOrderItems(orderItems.filter((item) => item.id !== id))
     };
 
     const renderOrderItem = ({ item }) => (
@@ -28,10 +26,7 @@ const OrderList = () => {
                 <Text>Order: {item.order}</Text>
                 <Text>Customer: {item.customer}</Text>
             </View>
-            <TouchableOpacity
-                style={styles.deleteButton}
-                onPress={() => handleDeleteOrder(item.id)}
-            >
+            <TouchableOpacity style={styles.deleteButton} onPress={() => handleDeleteOrder(item.id)}>
                 <Icon name="trash" size={20} color="#f00" />
             </TouchableOpacity>
         </View>
@@ -40,7 +35,7 @@ const OrderList = () => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={orders}
+                data={orderItems}
                 renderItem={renderOrderItem}
                 keyExtractor={(item) => item.id}
             />

@@ -24,7 +24,7 @@ const MenuView = () => {
     <View style={styles.menuItem}>
       <Text>{item.item}</Text>
       <TouchableOpacity onPress={() => handleDeleteItem(item.id)} style={styles.deleteButton}>
-        <Icon name="trash" size={20} color="white" />
+        <Icon name="trash" size={20} color="#f00" />
       </TouchableOpacity>
     </View>
   );
@@ -98,13 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deleteButton: {
-    backgroundColor: 'red',
     padding: 5,
-    borderRadius: 5,
-  },
-  deleteButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
   },
 });
 

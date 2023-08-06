@@ -6,7 +6,6 @@ const MenuScreen = () => {
   return (
     <View style={styles.container}>
       <AdminMenuView/>
-      {/* Your menu screen content goes here */}
     </View>
   );
 };

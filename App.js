@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AdminNavigator from './AdminNavigator';
+import UserNavigator from './UserNavigator';
 
 export default function App() {
 
@@ -12,7 +13,7 @@ export default function App() {
     // Perform actions based on the selected menu item if needed.
   };
 
-  return <AdminNavigator/>;
+  return <UserNavigator/>;
 }
 
 const styles = StyleSheet.create({

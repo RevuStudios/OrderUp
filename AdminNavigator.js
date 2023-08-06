@@ -6,7 +6,7 @@ import MenuScreen from './MenuScreen';
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => {
+const AdminNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -17,4 +17,4 @@ const AppNavigator = () => {
   );
 };
 
-export default AppNavigator;
+export default AdminNavigator;

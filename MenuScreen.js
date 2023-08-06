@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import MenuView from './MenuView';
+import AdminMenuView from './AdminMenuView';
 
 const MenuScreen = () => {
   return (
     <View style={styles.container}>
-        <MenuView/>
+      <AdminMenuView/>
       {/* Your menu screen content goes here */}
     </View>
   );

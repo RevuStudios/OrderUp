@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const MenuView = () => {
+const AdminMenuView = () => {
   const [menuItem, setMenuItem] = useState('');
   const [menuPrice, setMenuPrice] = useState('');
   const [menuItems, setMenuItems] = useState([]);
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MenuView;
+export default AdminMenuView;

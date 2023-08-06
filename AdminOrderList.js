@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const OrderList = () => {
+const AdminOrderList = () => {
     // Sample orders data
     const initialOrders = [
         { id: '1', orderNumber: 'ORD001', order: 'Omelette', customer: 'John Doe' },
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default OrderList;
+export default AdminOrderList;

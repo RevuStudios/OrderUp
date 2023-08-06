@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-const CartView = ({ cartItems, onRemoveItem, onPlaceOrder, onAdd }) => {
+const CartView = ({ cartItems, onRemoveItem, onPlaceOrder }) => {
     const renderItem = ({ item }) => (
         <View style={styles.cartItem}>
             <Text style={styles.itemName}>{item.name}</Text>
@@ -27,7 +27,7 @@ const CartView = ({ cartItems, onRemoveItem, onPlaceOrder, onAdd }) => {
                     />
 
                     {/* Cart Total */}
-                    <Text style={styles.cartTotal}>Total: ${cartTotal}</Text>
+                    <Text style={styles.cartTotal}>Total: R{cartTotal}</Text>
 
                     {/* Place Order Button */}
                     <TouchableOpacity onPress={onPlaceOrder} style={styles.placeOrderButton}>

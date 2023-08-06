@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
-const UserOrderView = () => {
+const OrderView = () => {
     const route = useRoute();
     const item = route.params?.item;
+    const [specialInstructions, setSpecialInstructions] = useState('');
     const [quantity, setQuantity] = useState(1);
 
     const handleIncreaseQuantity = () => {
@@ -17,50 +18,67 @@ const UserOrderView = () => {
         }
     };
 
+    
+    const dismissKeyboard = () => {
+        Keyboard.dismiss();
+    };
+
     const handleAddToCart = () => {
         // Implement the logic to add the item to the cart here
-        console.log(`Added ${quantity} items to cart`);
+        console.log(`Added ${item.name} to cart with special instructions: ${specialInstructions}`);
     };
 
     return (
-        <View style={styles.container}>
-            {/* Image */}
-            <Image
-                source={{ uri: 'url_for_item_image' }} // Replace with the actual image URL
-                style={styles.itemImage}
-            />
-
-            {/* Name */}
-            <Text style={styles.itemName}>{item.name}</Text>
-
-            {/* Description */}
-            <Text style={styles.itemDescription}>{item.description}</Text>
-
-            {/* Price */}
-            <Text style={styles.itemPrice}>R{item.price}</Text>
-
-            {/* Quantity */}
-            <View style={styles.quantityContainer}>
-                <TouchableOpacity onPress={handleDecreaseQuantity}>
-                    <Text style={styles.quantityArrow}>-</Text>
-                </TouchableOpacity>
-                <TextInput
-                    value={String(quantity)}
-                    onChangeText={(text) => setQuantity(parseInt(text, 10))}
-                    keyboardType="numeric"
-                    editable={false} // Disable the keyboard
-                    style={styles.quantityInput}
+        <TouchableWithoutFeedback onPress={dismissKeyboard}>
+            <View style={styles.container}>
+                {/* Image */}
+                <Image
+                    source={{ uri: 'url_for_item_image' }} // Replace with the actual image URL
+                    style={styles.itemImage}
                 />
-                <TouchableOpacity onPress={handleIncreaseQuantity}>
-                    <Text style={styles.quantityArrow}>+</Text>
+
+                {/* Name */}
+                <Text style={styles.itemName}>{item.name}</Text>
+
+                {/* Description */}
+                <Text style={styles.itemDescription}>{item.description}</Text>
+
+                {/* Price */}
+                <Text style={styles.itemPrice}>{item.price}</Text>
+
+                {/* Quantity */}
+                <View style={styles.quantityContainer}>
+                    <TouchableOpacity onPress={handleDecreaseQuantity}>
+                        <Text style={styles.quantityArrow}>-</Text>
+                    </TouchableOpacity>
+                    <TextInput
+                        value={String(quantity)}
+                        onChangeText={(text) => setQuantity(parseInt(text, 10))}
+                        keyboardType="numeric"
+                        editable={false} // Disable the keyboard
+                        style={styles.quantityInput}
+                    />
+                    <TouchableOpacity onPress={handleIncreaseQuantity}>
+                        <Text style={styles.quantityArrow}>+</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* Special Instructions */}
+                <TextInput
+                    placeholder="Special Instructions"
+                    value={specialInstructions}
+                    onChangeText={setSpecialInstructions}
+                    style={styles.specialInstructionsInput}
+                    multiline // Allow multiple lines
+                    numberOfLines={4} // Set the initial number of lines
+                />
+
+                {/* Add to Cart Button */}
+                <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
+                    <Text style={styles.addToCartButtonText}>Add to Cart</Text>
                 </TouchableOpacity>
             </View>
-
-            {/* Add to Cart Button */}
-            <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
-                <Text style={styles.addToCartButtonText}>Add to Cart</Text>
-            </TouchableOpacity>
-        </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -116,6 +134,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+    specialInstructionsInput: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        marginBottom: 20,
+        textAlignVertical: 'top', // Start typing from the top
+    },
 });
 
-export default UserOrderView;
+export default OrderView;

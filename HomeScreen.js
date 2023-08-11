@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AdminOrderList from './AdminOrderList';
+import UserMenuView from './UserMenuView';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <AdminOrderList />
-      {/* Your home screen content goes here */}
     </View>
   );
 };

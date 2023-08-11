@@ -11,6 +11,7 @@ const UserNavigator = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (item) => {
+    console.log("cart items", cartItems)
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
@@ -26,7 +27,14 @@ const UserNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={OrderNavigator} />
+        <Tab.Screen 
+          name="Home"
+          children={()=>(
+            <OrderNavigator 
+              handleAddtoCart={handleAddToCart}
+            />
+          )}
+        />
         <Tab.Screen
           name="Cart"
           options={{ title: 'Cart' }}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
-const OrderView = () => {
+const OrderView = ({ onAddToCart }) => {
     const route = useRoute();
     const item = route.params?.item;
     const [specialInstructions, setSpecialInstructions] = useState('');
@@ -17,15 +17,9 @@ const OrderView = () => {
             setQuantity(quantity - 1);
         }
     };
-
     
     const dismissKeyboard = () => {
         Keyboard.dismiss();
-    };
-
-    const handleAddToCart = () => {
-        // Implement the logic to add the item to the cart here
-        console.log(`Added ${item.name} to cart with special instructions: ${specialInstructions}`);
     };
 
     return (
@@ -74,7 +68,7 @@ const OrderView = () => {
                 />
 
                 {/* Add to Cart Button */}
-                <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
+                <TouchableOpacity onPress={() => onAddToCart(item)} style={styles.addToCartButton}>
                     <Text style={styles.addToCartButtonText}>Add to Cart</Text>
                 </TouchableOpacity>
             </View>

@@ -5,11 +5,19 @@ import UserOrderView from './UserOrderView';
 
 const Stack = createStackNavigator();
 
-const OrderNavigator = () => {
+const OrderNavigator = ({ handleAddtoCart }) => {
   return (
       <Stack.Navigator>
-        <Stack.Screen name="Menu" component={UserMenuView} options={{ title: 'Restaurant Menu' }} />
-        <Stack.Screen name="OrderView" component={UserOrderView} options={{ title: 'Order Item' }} />
+        <Stack.Screen name="Menu" component={UserMenuView} options={{ title: 'Menu' }} />
+        <Stack.Screen 
+          name="OrderView" 
+          options={{ title: 'Order Item' }} 
+          children={()=>(
+            <UserOrderView 
+              onAddToCart={ handleAddtoCart }
+            />
+          )}
+        />
       </Stack.Navigator>
   );
 };

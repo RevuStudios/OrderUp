@@ -6,7 +6,7 @@ import UserMenuView from './UserMenuView';
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <UserMenuView />
+      <AdminOrderList />
     </View>
   );
 };

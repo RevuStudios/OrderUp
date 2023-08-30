@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import db from './MySQL';
 
 const AdminMenuView = () => {
   const [menuItem, setMenuItem] = useState('');
   const [menuPrice, setMenuPrice] = useState('');
   const [menuItems, setMenuItems] = useState([]);
+
+  const date = new Date(Date.now());
+  const options = {year: 'numeric', month: 'numeric', day: 'numeric' };
+  const today = date.toLocaleDateString('en-ZA', options)
 
   const handleAddItem = () => {
     if (menuItem.trim() !== '' && menuPrice.trim() !== '') {
@@ -13,6 +18,12 @@ const AdminMenuView = () => {
       setMenuItems((prevItems) => [...prevItems, newItem]);
       setMenuItem('');
       setMenuPrice('');
+      //run dbexecute
+      db.execute("INSERT INTO menu (item_name, description, price, active, inserted_at) VALUES ("+menuItem+", "+menuItem+", "+menuPrice+", 1, "+today+")", function(err, rows, fields) {
+        // Connection is automatically released when query resolves
+        console.log("added" + menuItem)
+      });
+
     }
   };
 

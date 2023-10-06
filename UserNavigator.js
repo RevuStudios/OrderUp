@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+
+
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import config from './src/aws-exports';
+
+import { Authenticator, useAuthenticator} from '@aws-amplify/ui-react-native';
+
+Amplify.configure(config);
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import OrderNavigator from './OrderNavigator';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Button } from 'react-native';
 
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import config from './src/aws-exports';
@@ -13,6 +13,12 @@ import OrderNavigator from './OrderNavigator';
 import CartView from './CartView';
 
 const Tab = createBottomTabNavigator();
+
+const SignOutButton = () => {
+  const { signOut } = useAuthenticator();
+  return <Button title="Sign Out" onPress={signOut} />;
+
+};
 
 const UserNavigator = () => {
 
@@ -37,6 +43,15 @@ const UserNavigator = () => {
       <Tab.Navigator>
         <Tab.Screen 
           name="Home"
+          options={{
+            headerRight: () => (
+              <Authenticator.Provider>
+                <Authenticator>
+                  <SignOutButton />
+                </Authenticator>
+              </Authenticator.Provider>
+            ),
+          }}
           children={()=>(
             <OrderNavigator 
               handleAddtoCart={handleAddToCart}

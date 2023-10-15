@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+
+import { Amplify, } from 'aws-amplify';
+import config from './src/aws-exports';
+
+import { Authenticator, } from '@aws-amplify/ui-react-native';
+
+Amplify.configure(config);
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AdminNavigator from './AdminNavigator';
 import UserNavigator from './UserNavigator';
 
-import { Authenticator, } from '@aws-amplify/ui-react-native';
 
 export default function App() {
 

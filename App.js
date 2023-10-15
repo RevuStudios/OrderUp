@@ -4,13 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import AdminNavigator from './AdminNavigator';
 import UserNavigator from './UserNavigator';
 
-import { Authenticator, useAuthenticator} from '@aws-amplify/ui-react-native';
+import { Authenticator, } from '@aws-amplify/ui-react-native';
 
-function SignOutButton(){
-  const { signOut } = useAuthenticator();
-  return <Button title="Sign Out" onPress={signOut} />;
-
-};
 export default function App() {
 
   const [activeMenuItem, setActiveMenuItem] = useState('1');

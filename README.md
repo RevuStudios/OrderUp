@@ -1,6 +1,8 @@
 # OrderUp
 
-OrderUp is a order management system
+OrderUp is an internal order management system
+This is only meant for businesses of a size where needed,
+to manage kitchen orders.
 users make orders through the app, the admin portal see's the active orders
 
 We are using react native to create this application.
